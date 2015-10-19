@@ -183,8 +183,15 @@ static void usb_resume(RESUME_STATE eResumeSetVal) {
     }
 }
 
+uint8 CAN_RX0_IRQ_Handler(void);
+
 #define SUSPEND_ENABLED 1
 void __irq_usb_lp_can_rx0(void) {
+
+    if (CAN_RX0_IRQ_Handler()) {
+        return;
+    }
+
     uint16 istr = USB_BASE->ISTR;
 
     /* Use USB_ISR_MSK to only include code for bits we care about. */

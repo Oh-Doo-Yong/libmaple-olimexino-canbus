@@ -382,8 +382,12 @@ void usb_cdcacm_enable(gpio_dev *disc_dev, uint8 disc_bit) {
 void usb_cdcacm_disable(gpio_dev *disc_dev, uint8 disc_bit) {
     /* Turn off the interrupt and signal disconnect (see e.g. USB 2.0
      * spec, section 7.1.7.3). */
-    nvic_irq_disable(NVIC_USB_LP_CAN_RX0);
+    nvic_irq_disable(NVIC_USB_LP_CAN_RX0);//???
     gpio_write_bit(disc_dev, disc_bit, 1);
+
+    rcc_reset_dev(RCC_USB);
+    //rcc_clk_disable(RCC_USB);
+    line_dtr_rts = 0;
 }
 
 void usb_cdcacm_putc(char ch) {

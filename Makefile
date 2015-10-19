@@ -84,6 +84,7 @@ LIBMAPLE_MODULES += $(SRCROOT)/wirish
 LIBMAPLE_MODULES += $(SRCROOT)/libraries/Servo
 LIBMAPLE_MODULES += $(SRCROOT)/libraries/LiquidCrystal
 LIBMAPLE_MODULES += $(SRCROOT)/libraries/Wire
+LIBMAPLE_MODULES += $(SRCROOT)/libraries/HardwareCAN
 
 # User modules:
 ifneq ($(USER_MODULES),)
