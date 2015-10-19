@@ -183,6 +183,13 @@ static void usb_resume(RESUME_STATE eResumeSetVal) {
     }
 }
 
+void USB_HP_CAN_TX_IRQHandler(void);
+
+void __irq_usb_hp_can_tx(void)
+{
+    USB_HP_CAN_TX_IRQHandler () ;
+}
+
 uint8 CAN_RX0_IRQ_Handler(void);
 
 #define SUSPEND_ENABLED 1
